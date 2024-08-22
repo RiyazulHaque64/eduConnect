@@ -26,11 +26,11 @@ const navLinks = [
 const MainLayout = ({ children }: TProps) => {
   return (
     <div>
-      <header>
+      <header className="border-b z-40 bg-background/60 backdrop-blur-md fixed top-0 left-0 right-0">
         <MainNav items={navLinks} />
       </header>
       <main>{children}</main>
-      <footer>Footer</footer>
+      {/* <footer>Footer</footer> */}
     </div>
   );
 };
