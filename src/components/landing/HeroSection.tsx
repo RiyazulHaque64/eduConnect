@@ -28,7 +28,7 @@ const HeroSection = () => {
           “You don’t understand anything until you learn it more than one way.”
         </p>
         <div className="flex items-center justify-center gap-3 flex-wrap">
-          <Link href="" className={cn(buttonVariants({ size: "lg" }))}>
+          <Link href="/courses" className={cn(buttonVariants({ size: "lg" }))}>
             Explore Now
           </Link>
           <Link
