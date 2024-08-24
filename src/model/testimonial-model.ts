@@ -12,12 +12,13 @@ const testimonialSchema = new Schema<ITestimonial>({
     default: 0,
   },
   courseId: {
-    type: Schema.Types.ObjectId,
+    type: Schema.ObjectId,
     required: true,
   },
   userId: {
-    type: Schema.Types.ObjectId,
+    type: Schema.ObjectId,
     required: true,
+    ref: "User",
   },
 });
 

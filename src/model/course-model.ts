@@ -6,6 +6,14 @@ const courseSchema = new Schema<ICourse>({
     type: String,
     required: true,
   },
+  subtitle: {
+    type: String,
+    required: true,
+  },
+  learning: {
+    type: [String],
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -41,6 +49,14 @@ const courseSchema = new Schema<ICourse>({
   quizSet: {
     type: Schema.ObjectId,
     required: false,
+  },
+  createdOn: {
+    type: Date,
+    required: true,
+  },
+  modifiedOn: {
+    type: Date,
+    required: true,
   },
 });
 
