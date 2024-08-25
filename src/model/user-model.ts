@@ -38,6 +38,10 @@ const userSchema = new Schema<IUser>({
     type: String,
     required: false,
   },
+  designation: {
+    type: String,
+    required: false,
+  },
 });
 
 export const User = models.User ?? model<IUser>("User", userSchema);

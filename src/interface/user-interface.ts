@@ -8,4 +8,5 @@ export interface IUser {
   bio: string;
   socialMedia: Object;
   profilePicture: string;
+  designation: string;
 }
