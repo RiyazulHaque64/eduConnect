@@ -64,16 +64,17 @@ export const getCourseDetailsByInstructor = async (instructorId: string) => {
     })
   );
 
-  const totalTestimonials = testimonials.reduce(
-    (currentValue: any, item: any) => {
-      return item.length + currentValue;
-    },
-    0
-  );
+  const totalTestimonials = testimonials.flat();
+
+  const avarageRating =
+    totalTestimonials.reduce((currentValue, item) => {
+      return currentValue + item.rating;
+    }, 0) / totalTestimonials.length;
 
   return {
     courses: courses?.length,
     enrollments: totalEnrollment,
-    reviews: totalTestimonials,
+    reviews: totalTestimonials.length,
+    rating: avarageRating,
   };
 };

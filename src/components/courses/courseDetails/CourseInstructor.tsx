@@ -43,7 +43,7 @@ const CourseInstructor = async ({ course }: { course: any }) => {
               </li>
               <li className="flex space-x-3">
                 <Star className="text-gray-600" />
-                <div>4.9 Average Rating</div>
+                <div>{courseDetailsByInstructor.rating} Average Rating</div>
               </li>
             </ul>
           </div>
