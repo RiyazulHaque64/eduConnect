@@ -3,7 +3,6 @@ import { BookCheck, Clock10, Radio } from "lucide-react";
 import CourseModuleList from "./Module/CourseModuleList";
 
 const CourseCurriculam = ({ course }: { course: any }) => {
-  console.log(course.modules);
   return (
     <>
       <div className="flex gap-x-5 items-center justify-center flex-wrap mt-4 mb-6 text-gray-600 text-sm">
@@ -25,7 +24,7 @@ const CourseCurriculam = ({ course }: { course: any }) => {
         className="w-full"
       >
         {course?.modules?.map((module: any, index: number) => (
-          <CourseModuleList key={index} />
+          <CourseModuleList key={index} module={module} />
         ))}
       </Accordion>
     </>

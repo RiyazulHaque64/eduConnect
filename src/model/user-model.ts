@@ -20,7 +20,7 @@ const userSchema = new Schema<IUser>({
   },
   phone: {
     type: String,
-    required: true,
+    required: false,
   },
   role: {
     type: String,
