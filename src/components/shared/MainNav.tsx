@@ -26,8 +26,6 @@ const MainNav = ({ items }: TProps) => {
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [loginSession, setLoginSession] = useState<Session | null>(null);
 
-  console.log(loginSession);
-
   useEffect(() => {
     setLoginSession(session);
   }, [session]);
@@ -96,9 +94,11 @@ const MainNav = ({ items }: TProps) => {
             <DropdownMenuItem className="cursor-pointer">
               <Link href="#">Testimonial & Certificates</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer">
-              <button onClick={() => signOut()}>Logout</button>
-            </DropdownMenuItem>
+            {loginSession && (
+              <DropdownMenuItem className="cursor-pointer">
+                <button onClick={() => signOut()}>Logout</button>
+              </DropdownMenuItem>
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
         <button
