@@ -2,9 +2,11 @@
 
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { Session } from "next-auth";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button, buttonVariants } from "../ui/button";
 import {
@@ -20,7 +22,16 @@ type TProps = {
   items: NavItem[];
 };
 const MainNav = ({ items }: TProps) => {
+  const { data: session } = useSession();
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+  const [loginSession, setLoginSession] = useState<Session | null>(null);
+
+  console.log(loginSession);
+
+  useEffect(() => {
+    setLoginSession(session);
+  }, [session]);
+
   return (
     <div className="container flex items-center justify-between h-20 py-6">
       <div className="flex items-center gap-6 lg:gap-10">
@@ -43,29 +54,31 @@ const MainNav = ({ items }: TProps) => {
         {showMobileMenu && <MobileNav items={items} />}
       </div>
       <div className="flex items-center gap-3">
-        <div className="hidden lg:flex items-center gap-3">
-          <Link
-            href="/login"
-            className={cn(buttonVariants({ size: "sm" }), "px-4")}
-          >
-            Login
-          </Link>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
-                Register
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 mt-4">
-              <DropdownMenuItem className="cursor-pointer">
-                <Link href="/register/student">Student</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="cursor-pointer">
-                <Link href="/register/instructor">Instructor</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+        {!loginSession && (
+          <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/login"
+              className={cn(buttonVariants({ size: "sm" }), "px-4")}
+            >
+              Login
+            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm">
+                  Register
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 mt-4">
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href="/register/student">Student</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href="/register/instructor">Instructor</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        )}
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Avatar>
@@ -84,7 +97,7 @@ const MainNav = ({ items }: TProps) => {
               <Link href="#">Testimonial & Certificates</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
-              <Link href="#">Logout</Link>
+              <button onClick={() => signOut()}>Logout</button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

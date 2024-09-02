@@ -1,4 +1,5 @@
 import MainNav from "@/components/shared/MainNav";
+import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 
 type TProps = {
@@ -27,7 +28,9 @@ const MainLayout = ({ children }: TProps) => {
   return (
     <div>
       <header className="border-b z-40 bg-background/60 backdrop-blur-md fixed top-0 left-0 right-0">
-        <MainNav items={navLinks} />
+        <SessionProvider>
+          <MainNav items={navLinks} />
+        </SessionProvider>
       </header>
       <main>{children}</main>
       {/* <footer>Footer</footer> */}
