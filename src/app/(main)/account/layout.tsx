@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function Layout({ tabs }: { tabs: any }) {
   return (
-    <section className="relative pb-16">
+    <section className="relative pb-16 mt-24">
       {/*end container*/}
       <div className="container relative mt-10">
         <div className="lg:flex">

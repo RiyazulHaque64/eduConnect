@@ -86,10 +86,10 @@ const MainNav = ({ items }: TProps) => {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56 mt-4">
             <DropdownMenuItem className="cursor-pointer">
-              <Link href="#">Profile</Link>
+              <Link href="/account">Profile</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
-              <Link href="#">My Courses</Link>
+              <Link href="/courses">My Courses</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
               <Link href="#">Testimonial & Certificates</Link>
