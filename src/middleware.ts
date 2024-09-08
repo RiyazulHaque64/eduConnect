@@ -13,7 +13,6 @@ export default auth(async (req) => {
   if (isPrivateRoute && !isAuthenticated) {
     return NextResponse.redirect(new URL(LOGIN, req.url));
   }
-  console.log(req.nextUrl.pathname);
 });
 
 export const config = {

@@ -14,3 +14,8 @@ export const credentialsLogin = async (email: string, password: string) => {
     throw new Error(error?.message);
   }
 };
+
+export const doSocialLogin = async (formData: FormData) => {
+  const action = formData.get("action") as string;
+  console.log(action);
+};
