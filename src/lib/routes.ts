@@ -1,9 +1,4 @@
-export const LOGIN = "login";
 export const ROOT = "/";
+export const LOGIN = "/login";
 
-export const PUBLIC_ROUTES = [
-  "/login",
-  "/register/instructor",
-  "/register/student",
-  "/courses",
-];
+export const PRIVATE_ROUTES = ["/account"];
