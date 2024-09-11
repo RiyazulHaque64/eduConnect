@@ -1,11 +1,13 @@
 "use client";
 
+import { createCheckoutSession } from "@/actions/stripe";
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 
 const EnrollCourse = () => {
   const handleEnrollCourse = async (formData: FormData) => {
-    console.log("clicked button");
+    const { url } = await createCheckoutSession(formData);
+    url && window.location.assign(url);
   };
   return (
     <form action={handleEnrollCourse}>
