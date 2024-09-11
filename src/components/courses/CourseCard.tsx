@@ -37,7 +37,7 @@ const CourseCard = ({ course }: { course: any }) => {
           <p className="text-md md:text-sm font-medium text-slate-700">
             {formatPrice(course.price)}
           </p>
-          <EnrollCourse />
+          <EnrollCourse course={course} />
         </div>
       </div>
     </div>

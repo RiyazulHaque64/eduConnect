@@ -4,9 +4,8 @@ export const formatAmountForStripe = (amount: number, currency: string) => {
     currency: currency,
     currencyDisplay: "symbol",
   });
-  console.log({ numberFormat });
+
   const parts = numberFormat.formatToParts(amount);
-  console.log(parts);
 
   let zeroDecimalCurrency = true;
   for (const part of parts) {
@@ -15,6 +14,6 @@ export const formatAmountForStripe = (amount: number, currency: string) => {
       break;
     }
   }
-  console.log(zeroDecimalCurrency);
+
   return zeroDecimalCurrency ? amount : Math.round(amount * 100);
 };
